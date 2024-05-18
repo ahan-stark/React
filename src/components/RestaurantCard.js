@@ -11,7 +11,6 @@ const RestaurantCard = (props) => {
     cuisines,
     avgRating,
   } = info;
-  console.log(info);
   return (
     <div className="res-card">
       <img className="res-img" src={CDN_URL + cloudinaryImageId} />
