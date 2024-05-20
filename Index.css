@@ -65,3 +65,7 @@
     background-color: beige;
     margin-top: 3%;
 }
+.login-btn{
+    padding: 0 20px;
+    cursor: pointer;
+}
