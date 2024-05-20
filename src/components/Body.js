@@ -33,9 +33,14 @@ const Body = () => {
               setSearchText(e.target.value);
             }}
           />
-          <button className="btn-search" onClick={()=>{
-            console.log(searchText);
-          }}>Search</button>
+          <button
+            className="btn-search"
+            onClick={() => {
+              console.log(searchText);
+            }}
+          >
+            Search
+          </button>
         </div>
         <button
           className="filter-btn"
