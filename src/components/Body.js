@@ -1,10 +1,28 @@
 import RestaurantCard from "./RestaurantCard";
 import { useState } from "react";
-import { allResturants } from "../utils/MockResData";
-
+import { useEffect } from "react";
+import Shimmer from "./Shimmer";
 const Body = () => {
-  const [resData, setresData] = useState(allResturants);
-  return (
+  let [resData, setresData] = useState([]);
+  useEffect(() => {
+    fetchData();
+  }, []);
+  const fetchData = async () => {
+    const data = await fetch(
+      "https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9056656&lng=77.62304519999999&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
+    );
+    const dynamicApi = await data.json();
+    console.log(
+      dynamicApi.data.cards[1].card.card.gridElements.infoWithStyle.restaurants
+    );
+    resData =
+      dynamicApi?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle
+        ?.restaurants;
+    setresData(resData);
+  };
+  return resData.length === 0 ? (
+    <Shimmer />
+  ) : (
     <div className="body">
       <div className="filter">
         <button
