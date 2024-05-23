@@ -21,7 +21,7 @@ const Body = () => {
       dynamicApi?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle
         ?.restaurants;
     setresData(resData);
-    setfilterdRes(resData)
+    setfilterdRes(resData);
   };
   return resData.length === 0 ? (
     <Shimmer />
