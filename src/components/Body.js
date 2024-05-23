@@ -5,12 +5,13 @@ import Shimmer from "./Shimmer";
 const Body = () => {
   let [resData, setresData] = useState([]);
   let [searchText, setSearchText] = useState("");
+  let [filterdRes, setfilterdRes] = useState([]);
   useEffect(() => {
     fetchData();
   }, []);
   const fetchData = async () => {
     const data = await fetch(
-      "https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9056656&lng=77.62304519999999&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
+      "https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.96340&lng=77.58550&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
     );
     const dynamicApi = await data.json();
     console.log(
@@ -20,6 +21,7 @@ const Body = () => {
       dynamicApi?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle
         ?.restaurants;
     setresData(resData);
+    setfilterdRes(resData)
   };
   return resData.length === 0 ? (
     <Shimmer />
@@ -36,7 +38,10 @@ const Body = () => {
           <button
             className="btn-search"
             onClick={() => {
-              console.log(searchText);
+              const filteredRes = resData.filter((res) =>
+                res.info.name.toLowerCase().includes(searchText.toLowerCase())
+              );
+              setfilterdRes(filteredRes);
             }}
           >
             Search
@@ -45,15 +50,17 @@ const Body = () => {
         <button
           className="filter-btn"
           onClick={() => {
-            updatedRes = resData.filter((res) => res.info.avgRatingString > 4);
-            setresData(updatedRes);
+            updatedRes = resData.filter(
+              (res) => res.info.avgRatingString > 4.5
+            );
+            setfilterdRes(updatedRes);
           }}
         >
           Top rated restaurants
         </button>
       </div>
       <div className="res-container">
-        {resData.map((restaurant) => {
+        {filterdRes.map((restaurant) => {
           return (
             <RestaurantCard key={restaurant.info.id} resDetails={restaurant} />
           );
