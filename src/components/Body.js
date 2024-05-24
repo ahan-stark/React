@@ -10,18 +10,24 @@ const Body = () => {
     fetchData();
   }, []);
   const fetchData = async () => {
-    const data = await fetch(
-      "https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.96340&lng=77.58550&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
-    );
-    const dynamicApi = await data.json();
-    console.log(
-      dynamicApi.data.cards[1].card.card.gridElements.infoWithStyle.restaurants
-    );
-    resData =
-      dynamicApi?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle
-        ?.restaurants;
-    setresData(resData);
-    setfilterdRes(resData);
+    try {
+      const data = await fetch(
+        "https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.96340&lng=77.58550&is-https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9029804&lng=77.6241936&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
+      );
+      const dynamicApi = await data.json();
+      console.log(dynamicApi);
+      console.log(
+        dynamicApi.data.cards[1].card.card.gridElements.infoWithStyle
+          .restaurants
+      );
+      resData =
+        dynamicApi?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle
+          ?.restaurants;
+      setresData(resData);
+      setfilterdRes(resData);
+    } catch {
+      alert("no internet connection, reload the page when connected!");
+    }
   };
   return resData.length === 0 ? (
     <Shimmer />
