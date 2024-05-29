@@ -6,25 +6,27 @@ const Header = () => {
   let [loginBtn, setloginBtn] = useState("Login");
   const onlineStatus = useOnlineStatus();
   return (
-    <div className="header">
+    <div className="flex justify-between bg-orange-400 shadow-lg">
+      <div>
       <Title />
-      <div className="nav-items">
-        <ul>
-          <li>status : {onlineStatus ? "🟢" : "🔴"}</li>
-          <li>
+      </div>
+      <div className="flex items-center">
+        <ul className="flex p-7">
+          <li className="px-3">status : {onlineStatus ? "🟢" : "🔴"}</li>
+          <li className="px-3">
             <Link to="/">Home</Link>
           </li>
-          <li>
+          <li className="px-3">
             <Link to="/about">About</Link>
           </li>
-          <li>
+          <li className="px-3">
             <Link to="/contact">Contact</Link>
           </li>
-          <li>
+          <li className="px-3">
             <Link to = "/grocery">Grocery</Link>
           </li>
           <button
-            className="login-btn"
+            className="className=px-3"
             onClick={() => {
               loginBtn === "Login"
                 ? setloginBtn("Logout")
