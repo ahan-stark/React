@@ -3,6 +3,7 @@ import { useState } from "react";
 import { useEffect } from "react";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
+import { resHomeUrl } from "../utils/Constants";
 import useOnlineStatus from "../utils/useOnlineStatus";
 const Body = () => {
   let [resData, setresData] = useState([]);
@@ -14,9 +15,7 @@ const Body = () => {
   }, []);
   const fetchData = async () => {
     try {
-      const data = await fetch(
-        "https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.96340&lng=77.58550&is-https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9029804&lng=77.6241936&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
-      );
+      const data = await fetch(resHomeUrl);
       const dynamicApi = await data.json();
       console.log(dynamicApi);
       console.log(
