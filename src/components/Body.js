@@ -77,11 +77,11 @@ const Body = () => {
       <div className="flex flex-wrap">
         {filterdRes.map((restaurant) => {
           return (
-            <Link to={"/restaurants/" + restaurant.info.id}>
-              <RestaurantCard
-                key={restaurant.info.id}
-                resDetails={restaurant}
-              />
+            <Link
+              to={"/restaurants/" + restaurant.info.id}
+              key={restaurant.info.id}
+            >
+              <RestaurantCard resDetails={restaurant} />
             </Link>
           );
         })}
