@@ -2,7 +2,9 @@ import Shimmer from "../components/Shimmer";
 import { useParams } from "react-router-dom";
 import useRestaurantMenu from "../utils/useRestaurantMenu";
 import RestaurantAccordian from "./RestuarantAccordion";
+import { useState } from "react";
 const RestaurantMenu = () => {
+  const [showAccordian, setshowAccordian] = useState(null);
   const { resId } = useParams();
   const resInfo = useRestaurantMenu(resId);
 
@@ -29,7 +31,16 @@ const RestaurantMenu = () => {
       </h3>
       <h2 className="text-lg font-bold">Menu</h2>
       {catagories.map((catagory, index) => {
-        return <RestaurantAccordian data = {catagory?.card}  key={index} />;
+        return (
+          <RestaurantAccordian
+            data={catagory?.card}
+            key={index}
+            showAccordian={index === showAccordian ? true : false}
+            setshowAccordian={() => {
+              setshowAccordian(index);
+            }}
+          />
+        );
       })}
     </div>
   );
