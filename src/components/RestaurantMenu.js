@@ -36,7 +36,11 @@ const RestaurantMenu = () => {
             key={index}
             showAccordian={index === showAccordian ? true : false}
             setshowAccordian={() => {
-              setshowAccordian(index);
+              if (index != showAccordian) {
+                setshowAccordian(index);
+              } else {
+                setshowAccordian(null);
+              }
             }}
           />
         );
