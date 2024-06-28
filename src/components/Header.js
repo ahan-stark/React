@@ -6,11 +6,13 @@ import { useSelector } from "react-redux";
 const Header = () => {
   let [loginBtn, setloginBtn] = useState("Login");
   const onlineStatus = useOnlineStatus();
-  let cartItems = useSelector((store)=> { return store.cart.items})
+  let cartItems = useSelector((store) => {
+    return store.cart.items;
+  });
   return (
     <div className="flex justify-between bg-orange-400 shadow-lg">
       <div>
-      <Title />
+        <Title />
       </div>
       <div className="flex items-center">
         <ul className="flex p-7">
@@ -28,7 +30,7 @@ const Header = () => {
             <Link to="/contact">Contact</Link>
           </li>
           <li className="px-3">
-            <Link to = "/grocery">Grocery</Link>
+            <Link to="/grocery">Grocery</Link>
           </li>
           <button
             className="className=px-3"
