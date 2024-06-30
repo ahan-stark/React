@@ -17,6 +17,8 @@ const Body = () => {
     try {
       const data = await fetch(resHomeUrl);
       const dynamicApi = await data.json();
+      console.log(dynamicApi);
+      console.log(dynamicApi.data.cards.length);
       resData =
         dynamicApi?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle
           ?.restaurants;
@@ -32,7 +34,7 @@ const Body = () => {
         <h1>No Internet Connection</h1>
       </div>
     );
-  return resData.length === 0 ? (
+  return !resData.length ? (
     <Shimmer />
   ) : (
     <div className="body">
@@ -41,6 +43,7 @@ const Body = () => {
           <input
             className="border border-solid border-orange-400 hover:border-orange-600"
             type="text"
+            data-testid="input-name"
             onChange={(e) => {
               setSearchText(e.target.value);
             }}
@@ -60,7 +63,7 @@ const Body = () => {
         <button
           className=" h-6 mt-10 mr-1 px-4 bg-orange-300 rounded-lg hover:bg-orange-400 hover:text-white"
           onClick={() => {
-            updatedRes = resData.filter(
+            let updatedRes = resData.filter(
               (res) => res.info.avgRatingString > 4.5
             );
             setfilterdRes(updatedRes);
@@ -69,14 +72,14 @@ const Body = () => {
           Top rated restaurants
         </button>
       </div>
-      <div className="flex flex-wrap">
+      <div className="flex flex-wrap" data-testid = "totalRes">
         {filterdRes.map((restaurant) => {
           return (
             <Link
               to={"/restaurants/" + restaurant.info.id}
               key={restaurant.info.id}
             >
-              <RestaurantCard resDetails={restaurant.info} />
+              <RestaurantCard resDetails={restaurant.info}  />
             </Link>
           );
         })}
