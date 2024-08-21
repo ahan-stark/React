@@ -49,7 +49,7 @@ const Body = () => {
             }}
           />
           <button
-            className="px-3 py-0.48 bg-orange-300 m-4 rounded-lg  hover:bg-orange-400  hover:text-white"
+            className="px-3 py-0.48 bg-orange-400 m-4 rounded-lg text-white  hover:bg-orange-500  hover:text-white"
             onClick={() => {
               const filteredRes = resData.filter((res) =>
                 res.info.name.toLowerCase().includes(searchText.toLowerCase())
@@ -61,7 +61,7 @@ const Body = () => {
           </button>
         </div>
         <button
-          className=" h-6 mt-10 mr-1 px-4 bg-orange-300 rounded-lg hover:bg-orange-400 hover:text-white"
+          className=" h-6 mt-10  px-4 bg-orange-400 text-white rounded-lg hover:bg-orange-500 hover:text-white"
           onClick={() => {
             let updatedRes = resData.filter(
               (res) => res.info.avgRatingString > 4.5
@@ -69,7 +69,7 @@ const Body = () => {
             setfilterdRes(updatedRes);
           }}
         >
-          Top rated restaurants
+          Top rated
         </button>
       </div>
       <div className="flex flex-wrap" data-testid = "totalRes">

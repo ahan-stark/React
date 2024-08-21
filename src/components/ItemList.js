@@ -6,9 +6,10 @@ const ItemList = ({ items }) => {
   const handleAddItem = (item) => {
     dispatch(addItems(item));
   };
+
   return (
     <div>
-      {items.map((item) => {
+      {items.map((item) => {        
         return (
           <div
             className="mt-4  bg-orange-200 shadow-lg p-4 rounded-3xl hover:bg-orange-300"

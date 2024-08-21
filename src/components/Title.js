@@ -1,5 +1,7 @@
-import { webLogo_URL } from "../utils/Constants.js";
+import logo from "../utils/logo.jpg";
 const Title = () => (
-  <img className="w-40" src={webLogo_URL} alt="Food Fire Logo" />
+  <div className="">
+    <img className="w-24 ml-9 py-2  cursor-pointer rounded-3xl" src={logo} alt="Food Fire Logo" />
+  </div>
 );
 export default Title;
