@@ -11,6 +11,8 @@ import Shimmer from "./components/Shimmer";
 import { Provider } from "react-redux";
 import appStore from "./utils/appStore";
 import Cart from "./components/Cart";
+import InstaMartHome from "./components/instaMart/InstaMartHome";
+import InstaMartCategoryView from "./components/instaMart/InstaMartCategoryView";
 //done to lazy loading of grocery... use Suspense in path and element
 const Grocery = lazy(() => import("./components/Grocery"));
 const AppLayout = () => {
@@ -52,10 +54,20 @@ const appRouter = createBrowserRouter([
             <Grocery />
           </Suspense>
         ),
+        children: [
+          {
+            path: "/grocery",
+            element: <InstaMartHome />,
+          },
+          {
+            path: "/grocery/categoryView",
+            element: <InstaMartCategoryView />,
+          },
+        ],
       },
       {
-        path:"/cart",
-        element:<Cart></Cart>
+        path: "/cart",
+        element: <Cart></Cart>,
       },
     ],
     errorElement: <Error />,

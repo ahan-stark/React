@@ -1,7 +1,19 @@
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { Outlet } from "react-router-dom";
+import { updateShowGrocery } from "../utils/instaMartSlice";
+
 const Grocery = () => {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(updateShowGrocery());
+    return () => {
+      dispatch(updateShowGrocery());
+    };
+  }, []);
   return (
     <div>
-      <h1>Welcome to swiggy instamart 🙌🙏</h1>
+      <Outlet />
     </div>
   );
 };

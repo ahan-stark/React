@@ -4,12 +4,10 @@ import { useEffect } from "react";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
 import { resHomeUrl } from "../utils/Constants";
-import useOnlineStatus from "../utils/useOnlineStatus";
 const Body = () => {
   let [resData, setresData] = useState([]);
   let [searchText, setSearchText] = useState("");
   let [filterdRes, setfilterdRes] = useState([]);
-  let onlineStatus = useOnlineStatus();
   useEffect(() => {
     fetchData();
   }, []);
@@ -28,12 +26,6 @@ const Body = () => {
       alert("no internet connection, reload the page when connected!");
     }
   };
-  if (onlineStatus == false)
-    return (
-      <div>
-        <h1>No Internet Connection</h1>
-      </div>
-    );
   return !resData.length ? (
     <Shimmer />
   ) : (
@@ -72,14 +64,14 @@ const Body = () => {
           Top rated
         </button>
       </div>
-      <div className="flex flex-wrap" data-testid = "totalRes">
+      <div className="flex flex-wrap" data-testid="totalRes">
         {filterdRes.map((restaurant) => {
           return (
             <Link
               to={"/restaurants/" + restaurant.info.id}
               key={restaurant.info.id}
             >
-              <RestaurantCard resDetails={restaurant.info}  />
+              <RestaurantCard resDetails={restaurant.info} />
             </Link>
           );
         })}
