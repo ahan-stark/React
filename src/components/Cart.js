@@ -2,16 +2,28 @@ import { useDispatch, useSelector } from "react-redux";
 import ItemList from "./ItemList";
 import { clearItem } from "../utils/cartSlice";
 import CartItems from "./CartItems";
+import { useEffect, useState } from "react";
 
 const Cart = () => {
   const cartData = useSelector((store) => {
     return store.cart.items;
   });
   const dispatch = useDispatch();
+  const [totalCost, setTotalCost] = useState(0);
   const clearCart = () => {
     dispatch(clearItem());
   };
   console.log(cartData);
+  useEffect(() => {
+    if (cartData.length > 0) calculateTotal();
+  }, []);
+  const calculateTotal = () => {
+    let total = cartData.reduce(
+      (accumulator, data) => accumulator + data.card?.info?.price / 100,
+      0
+    );
+    setTotalCost(total);
+  };
 
   return (
     <div className="text-center m-10 p -10">
@@ -28,10 +40,13 @@ const Cart = () => {
           >
             Clear Cart
           </button>
-          <div className="flex gap-6 flex-wrap"> 
+          <div className="flex gap-6 flex-wrap">
             {cartData.map((items) => (
               <CartItems content={items} />
             ))}
+          </div>
+          <div className="mt-8 font-bold text-2xl text-orange-500">
+            <div>Total : ₹ {Math.round(totalCost)}</div>
           </div>
         </div>
       )}

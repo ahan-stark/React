@@ -8,8 +8,9 @@ const Header = () => {
     return store.cart.items;
   });
   let showGroceryCart = useSelector(
-    (store) => store.instaMartCart.showGroceryCart
+    (store) => store.instaMartCartShowCart.showGroceryCart
   );
+  let groceryCart = useSelector((store) => store.instaMartCart.cart)
   return (
     <div className="flex justify-between bg-orange-400 shadow-lg">
       <div>
@@ -23,9 +24,11 @@ const Header = () => {
           <li className="px-3 rounded-lg  bg-white text-orange-700">
             <Link to="/about">About</Link>
           </li>
-          <li className="px-3  rounded-lg  bg-white text-orange-700">
-            <Link to="/cart"> Cart - ({cartItems.length})</Link>
-          </li>
+          {!showGroceryCart && (
+            <li className="px-3  rounded-lg  bg-white text-orange-700">
+              <Link to="/cart"> Cart - ({cartItems.length})</Link>
+            </li>
+          )}
           <li className="px-3 rounded-lg  bg-white text-orange-700">
             <Link to="/contact">Contact</Link>
           </li>
@@ -34,7 +37,11 @@ const Header = () => {
           </li>
           {showGroceryCart && (
             <li>
-              <div className="px-3  rounded-lg  bg-white text-orange-700 cursor-pointer">G - cart</div>
+              <Link to="/grocery/cart">
+                <div className="px-3  rounded-lg  bg-white text-orange-700 cursor-pointer">
+                  G - cart - ({groceryCart.length})
+                </div>
+              </Link>
             </li>
           )}
         </ul>

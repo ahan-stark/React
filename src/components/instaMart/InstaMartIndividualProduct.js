@@ -1,8 +1,23 @@
 import React from "react";
 import { instaMartCDN_URL } from "../../utils/Constants";
+import { useDispatch } from "react-redux";
+import { addToInstaMartCart } from "../../utils/instaMartCartSlice";
 
 const InstaMartIndividualProduct = (props) => {
+  const dispatch = useDispatch();
+  console.log(props);
+
   let { display_name, id, images, price } = props.value.variations[0];
+  const addToCart = () => {
+    dispatch(
+      addToInstaMartCart({
+        display_name: display_name,
+        id: id,
+        images: images,
+        price: price,
+      })
+    );
+  };
   return (
     <div className="border-[3px] border-orange-500 w-[20%] rounded-3xl h-[25em] cursor-pointer hover:scale-105">
       <div className="h-[67%]">
@@ -28,7 +43,12 @@ const InstaMartIndividualProduct = (props) => {
         </div>
       </div>
       <div className="h-[13%] mt-2">
-        <button className=" bg-orange-400 w-[4em] h-[1.8em] mx-[37%]  rounded-lg text-white font-semibold">
+        <button
+          className=" bg-orange-400 w-[4em] h-[1.8em] mx-[37%]  rounded-lg text-white font-semibold"
+          onClick={() => {
+            addToCart();
+          }}
+        >
           add
         </button>
       </div>

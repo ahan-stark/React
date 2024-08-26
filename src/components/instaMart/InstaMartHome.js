@@ -7,7 +7,7 @@ const InstaMartHome = () => {
   const homeData = useGetHomeData();
   if (homeData == null) return <Shimmer />;
 
-  const { data } = homeData.data.widgets[3]
+  const { data } = homeData.data.widgets[1]
   return (
     <div>
       <div className="">

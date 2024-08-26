@@ -11,4 +11,4 @@ export const instaMartCDN_URL =
   "https://instamart-media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_294/";
 
 export const InstaMartCategoryView =
-  "https://www.swiggy.com/api/instamart/category-listing?categoryName=enter_name&storeId=911032&offset=0&filterName=&taxonomyType=Speciality%20taxonomy%201";
+  "https://www.swiggy.com/api/instamart/category-listing?categoryName=enter_name&storeId=911032&offset=0&filterName=&taxonomyType=All%20Listing";

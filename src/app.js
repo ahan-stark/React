@@ -13,6 +13,7 @@ import appStore from "./utils/appStore";
 import Cart from "./components/Cart";
 import InstaMartHome from "./components/instaMart/InstaMartHome";
 import InstaMartCategoryView from "./components/instaMart/InstaMartCategoryView";
+import InstaMartCart from "./components/instaMart/InstaMartCart";
 //done to lazy loading of grocery... use Suspense in path and element
 const Grocery = lazy(() => import("./components/Grocery"));
 const AppLayout = () => {
@@ -62,6 +63,10 @@ const appRouter = createBrowserRouter([
           {
             path: "/grocery/categoryView",
             element: <InstaMartCategoryView />,
+          },
+          {
+            path: "/grocery/cart",
+            element: <InstaMartCart />,
           },
         ],
       },
