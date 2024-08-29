@@ -10,7 +10,6 @@ const Contact = () => {
         <form
         className="mt-4 flex flex-col ml-[40%]"
           onSubmit={(e) => {
-            console.log("submited");
             e.preventDefault();
           }}
         >

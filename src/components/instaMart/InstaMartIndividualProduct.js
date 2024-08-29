@@ -5,7 +5,6 @@ import { addToInstaMartCart } from "../../utils/instaMartCartSlice";
 
 const InstaMartIndividualProduct = (props) => {
   const dispatch = useDispatch();
-  console.log(props);
 
   let { display_name, id, images, price } = props.value.variations[0];
   const addToCart = () => {

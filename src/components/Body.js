@@ -15,8 +15,6 @@ const Body = () => {
     try {
       const data = await fetch(resHomeUrl);
       const dynamicApi = await data.json();
-      console.log(dynamicApi);
-      console.log(dynamicApi.data.cards.length);
       resData =
         dynamicApi?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle
           ?.restaurants;

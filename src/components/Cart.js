@@ -13,13 +13,12 @@ const Cart = () => {
   const clearCart = () => {
     dispatch(clearItem());
   };
-  console.log(cartData);
   useEffect(() => {
     if (cartData.length > 0) calculateTotal();
   }, []);
   const calculateTotal = () => {
     let total = cartData.reduce(
-      (accumulator, data) => accumulator + data.card?.info?.price / 100,
+      (accumulator, data) => accumulator + data?.card?.info?.price / 100,
       0
     );
     setTotalCost(total);
@@ -46,7 +45,9 @@ const Cart = () => {
             ))}
           </div>
           <div className="mt-8 font-bold text-2xl text-orange-500">
-            <div>Total : ₹ {Math.round(totalCost)}</div>
+            {!isNaN(Math.round(totalCost)) && (
+              <div>Total : ₹ {Math.round(totalCost)}</div>
+            )}
           </div>
         </div>
       )}

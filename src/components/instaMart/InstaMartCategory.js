@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 
 const InstaMartCategory = (props) => {
   const { categoryData } = props;
-  console.log(categoryData);
 
   return (
     <div className="ml-6 mr-4">
@@ -19,8 +18,9 @@ const InstaMartCategory = (props) => {
                 "/grocery/categoryView?name=" +
                 val.displayName.replace(" ", "%20")
               }
+              key={index}
             >
-              <InstaMartCategoryProduct val={val} key={index} />
+              <InstaMartCategoryProduct val={val} />
             </Link>
           );
         })}

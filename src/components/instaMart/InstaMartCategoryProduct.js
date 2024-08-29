@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 
 const InstaMartCategoryProduct = (props) => {
   const { val } = props;
-  console.log(val);
 
   const { imageId, displayName } = val;
 

@@ -36,7 +36,7 @@ test("should load top-rated restaurants", async () => {
     </BrowserRouter>
   );
   const topResBtn = await screen.findByRole("button", {
-    name: "Top rated restaurants",
+    name: "Top rated",
   });
   expect(topResBtn).toBeInTheDocument();
   fireEvent.click(topResBtn);
